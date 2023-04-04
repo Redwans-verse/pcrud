@@ -49,3 +49,22 @@ exports.products=async (req,res)=>{
         return res.status(401).json({ msg: error.message });
     }
 }
+
+//delete product
+
+exports.deletePro= async (req,res)=>{
+    const {id}=req.params
+    try {
+        const product= await Products.findOne({_id:id})
+        console.log(product)
+        if (!product){
+            return res.json("not found")
+        }else{
+            const deleteProduct= await Products.findByIdAndRemove({_id:product._id})
+            return res.json(deleteProduct)
+        }
+
+    }catch (error) {
+        return res.status(401).json({ msg: error.message });
+    }
+}

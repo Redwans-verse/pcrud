@@ -3,7 +3,7 @@ const router= express.Router()
 const {login,createUser}=require('../controller/userController')
 const upload=require('../helper/fileUpload')
 const multer = require("multer");
-const {create,products}=require('../controller/productController')
+const {create,products,deletePro}=require('../controller/productController')
 const {islogin} = require("../middleware/auth");
 
 
@@ -25,6 +25,7 @@ router.post("/uploadfile", upload, (req, res) => {
 
 router.post('/product/create',islogin,upload,create)
 router.get('/product/products',islogin,products)
+router.delete('/product/:id',islogin,deletePro)
 
 
 
