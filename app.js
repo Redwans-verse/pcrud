@@ -6,7 +6,6 @@ var cors = require('cors')
 app.use(cors())
 
 require("dotenv").config();
-
 app.use('/images', express.static('images'))
 var router= require('./router/userRouter')
 app.use(express.json());
